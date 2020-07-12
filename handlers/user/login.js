@@ -41,6 +41,7 @@ module.exports = async (req, res) => {
     );
     return res.json({
         success: true,
+        user,
         token //token: token
     })
 }

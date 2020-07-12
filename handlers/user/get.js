@@ -15,6 +15,12 @@ module.exports = async (req, res) => {
     const user = await User.findOne({login: req.params.login}, {
         password: false
     });
+    if(!user){
+        return res.json({
+            success: false,
+            error: "no such user"
+        })
+    }
     const twit = await Twit.find({user: user._id});
     return res.json({
         success: Boolean(user),
